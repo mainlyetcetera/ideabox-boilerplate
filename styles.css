@@ -60,24 +60,22 @@ hr {
   height: 8em;
 }
 
-#input-section {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  background: #A9AAD2;
-  height: 40vh;
-  align-items: center;
-  font-family: "Open Sans";
-  font-weight: bold;
-  color: #1F1F3D;
-
-}
-
 input {
   width: 31em;
   height: 3em;
   border-color: #353567;
+}
 
+#input-section {
+  display: flex;
+  flex-direction: column;
+  background: #A9AAD2;
+  height: 40vh;
+  padding-left: 28%;
+  padding-top: 3%;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color: #1F1F3D;
 }
 
 #input-section > button {
@@ -87,10 +85,24 @@ input {
   font-family: "Open Sans";
   font-weight: bold;
   color: #FFFFFF;
-  background: #1F1F3D
+  background: #1F1F3D;
 }
 
+#search-area {
+  display: flex;
+  flex-direction: row;
+  width: 26.5em;
+  background: #1F1F3D;
+  border-color: #353567;
+}
 
+#search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.2em;
+  padding: 0.8em;
+}
 
 /* card section */
 
