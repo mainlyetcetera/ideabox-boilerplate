@@ -1,3 +1,33 @@
+body {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
 #sidebar {
   background: #1F1F3D;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 20%;
+}
+
+#card-section {
+  align-self: flex-end;
+  background: #EAEAF4;
+  height: 60vh;
+  overflow: auto;
+}
+
+#input-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #A9AAD2;
+  height: 40vh;
 }
