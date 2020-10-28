@@ -13,15 +13,36 @@ body {
 
 /* sidebar section */
 
+hr {
+  width: 23vw;
+  border-color: #353567;
+  border-bottom-width: medium;
+}
+
+#sidebar > button {
+  color: #E9E9F3;
+  background: #5356A4;
+  align-self: center;
+  border-color: #353567;
+  height: 2.4em;
+  width: 12em;
+  font-family: "Open Sans";
+  font-size: 1.4em;
+  font-weight: 501;
+  margin-bottom: 1em;
+}
+
 #sidebar > h1 {
-  font-size: 1.1em;
+  font-size: 1.3em;
   margin-left: 1em;
+  margin-top: 1.3em;
 }
 
 #sidebar > h2 {
   color: #BFBFDD;
-  font-size: 0.75em;
-  margin-left: 1em;
+  font-size: 1em;
+  margin-left: 1.3em;
+  margin-bottom: 2em;
 }
 
 #sidebar {
@@ -29,25 +50,47 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 20%;
+  width: 25%;
   color: #E9E9F3;
-}
-
-#sidebar > button {
-  color: #E9E9F3;
-  background: #353567;
-  margin-left: 1em;
 }
 
 /* user input section*/
 
+#body-input {
+  height: 8em;
+}
+
 #input-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   background: #A9AAD2;
   height: 40vh;
+  align-items: center;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color: #1F1F3D;
+
 }
+
+input {
+  width: 31em;
+  height: 3em;
+  border-color: #353567;
+
+}
+
+#input-section > button {
+  width: 31.5em;
+  height: 3em;
+  border-color: #353567;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #1F1F3D
+}
+
+
 
 /* card section */
 
