@@ -3,13 +3,12 @@ body {
   display: flex;
   flex-direction: row;
   font-family: "Open Sans";
-  height: 100%;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 75%;
 }
 
 /* sidebar section */
@@ -23,8 +22,7 @@ hr {
   background: #1F1F3D;
   display: flex;
   flex-direction: column;
-  /* height: 66.4em; */
-  width: 21em;
+  width: 25%;
   color: #E9E9F3;
 }
 
@@ -33,23 +31,24 @@ hr {
   background: #5356A4;
   align-self: center;
   border: 0.1em solid #353567;
-  width: 12em;
+  width: 85%;
+  height: 3.5%;
   font-family: "Open Sans";
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: bold;
   margin-bottom: 1em;
 }
 
 #sidebar > h1 {
   font-size: 1.3em;
-  margin-left: 1.8em;
+  margin-left: 1em;
   margin-top: 1.3em;
 }
 
 #sidebar > h2 {
   color: #BFBFDD;
   font-size: 1em;
-  margin-left: 2.3em;
+  margin-left: 1.3em;
   margin-bottom: 2em;
 }
 
@@ -70,8 +69,7 @@ input {
   flex-direction: column;
   align-items: center;
   background: #A9AAD2;
-  height: 25.6em;
-  padding: 1.5em 30em;
+  padding: 1.5em;
   font-weight: bold;
 }
 
@@ -115,10 +113,12 @@ input {
   background: #EAEAF4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5em;
+  padding: 1.5em;
 }
 
 .card-section {
-  margin: 1em 0 0 1em;
+  width: 100%;
 }
 
 #comment-img {
@@ -133,7 +133,6 @@ input {
   background-color: #5356A4;
   border: 0.15em solid #353567;
   height: 2em;
-  width: 15em;
   color: #FFFFFF;
   font-weight: bold;
 }
@@ -148,7 +147,6 @@ input {
   border: 0.15em solid #353567;
   padding: 0em 1em;
   height: 13em;
-  width: 13em;
 }
 
 .star-img {
@@ -161,6 +159,5 @@ input {
   display: flex;
   justify-content: space-between;
   background-color: #1F1F3D;
-  width: 15.3em;
   height: 2em;
 }
