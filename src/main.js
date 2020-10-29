@@ -20,15 +20,20 @@ function toggleSaveButton() {
 
 function saveIdea(event) {
   event.preventDefault();
-  var blah = createIdea();
-  displayCard(blah);
+  var currentIdea = createIdea();
+  displayCard(currentIdea);
+  addToList(currentIdea);
 }
 
 function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
-  var idea = new Idea(title, body);  
+  var idea = new Idea(title, body);
   return idea;
+}
+
+function addToList(idea) {
+  ideaList.push(idea);
 }
 
 function displayCard(idea) {
