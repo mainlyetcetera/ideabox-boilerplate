@@ -8,7 +8,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 66em;
+  width: 100%;
 }
 
 /* sidebar section */
@@ -118,8 +118,7 @@ input {
 }
 
 .card-section {
-  margin: 1em;
-  overflow: auto;
+  margin: 1em 0 0 1em;
 }
 
 #comment-img {
