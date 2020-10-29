@@ -73,7 +73,7 @@ input {
   font-weight: bold;
 }
 
-#input-section > button {
+.save-button {
   width: 26.4em;
   height: 2.5em;
   border: 0.15em solid #5356A4;

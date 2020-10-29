@@ -1,4 +1,4 @@
-var saveButton = document.querySelector('#save-button');
+var saveButton = document.querySelector('.save-button');
 var titleField = document.querySelector('#title-input-area');
 var bodyField = document.querySelector('#body-input-area');
 var cardGrid = document.querySelector('#card-grid');
@@ -20,6 +20,7 @@ function toggleSaveButton() {
 
 function saveIdea(event) {
   event.preventDefault();
+  toggleSaveButton();
   var currentIdea = createIdea();
   displayCard(currentIdea);
   addToList(currentIdea);
@@ -59,4 +60,5 @@ function addToList(idea) {
 function clearForm() {
   titleField.value = '';
   bodyField.value = '';
+  toggleSaveButton();
 }
