@@ -23,6 +23,7 @@ function saveIdea(event) {
   var currentIdea = createIdea();
   displayCard(currentIdea);
   addToList(currentIdea);
+  clearForm();
 }
 
 function createIdea(title, body) {
@@ -30,10 +31,6 @@ function createIdea(title, body) {
   body = bodyField.value;
   var idea = new Idea(title, body);
   return idea;
-}
-
-function addToList(idea) {
-  ideaList.push(idea);
 }
 
 function displayCard(idea) {
@@ -53,4 +50,13 @@ function displayCard(idea) {
     </div>
   </article>
   `;
+}
+
+function addToList(idea) {
+  ideaList.push(idea);
+}
+
+function clearForm() {
+  titleField.value = '';
+  bodyField.value = '';
 }
