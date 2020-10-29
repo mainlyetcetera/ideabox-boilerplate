@@ -8,7 +8,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 66em;
 }
 
 /* sidebar section */
@@ -110,7 +110,6 @@ input {
 }
 
 
-
 /* card section */
 #card-grid {
   background: #EAEAF4;
@@ -143,6 +142,7 @@ input {
 .delete-img {
   height: 2em;
   width: 2em;
+  margin: 0 0.2em;
 }
 
 #message-part {
@@ -155,6 +155,7 @@ input {
 .star-img {
   height: 2em;
   width: 2em;
+  margin: 0 0.2em;
 }
 
 #favortie-delete-part {
