@@ -13,7 +13,7 @@ body {
 
 /* sidebar section */
 hr {
-  width: 23vw;
+  width: 21em;
   border-color: #353567;
   border-bottom-width: medium;
 }
@@ -33,14 +33,14 @@ hr {
 
 #sidebar > h1 {
   font-size: 1.3em;
-  margin-left: 1em;
+  margin-left: 1.8em;
   margin-top: 1.3em;
 }
 
 #sidebar > h2 {
   color: #BFBFDD;
   font-size: 1em;
-  margin-left: 1.3em;
+  margin-left: 2.3em;
   margin-bottom: 2em;
 }
 
@@ -68,9 +68,10 @@ input {
 #input-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: #A9AAD2;
   height: 25.6em;
-  padding: 1.5em 18em 0 18em;
+  padding: 1.5em 30em;
   font-weight: bold;
 }
 
@@ -84,6 +85,10 @@ input {
   background-color: #353567;
   margin-bottom: 2em;
   font-size: 1em;
+}
+
+#input-section > label {
+  margin-right: 24em;
 }
 
 #search-area {
@@ -103,6 +108,8 @@ input {
   height: 1.2em;
   padding: 0.9em;
 }
+
+
 
 /* card section */
 #card-grid {
