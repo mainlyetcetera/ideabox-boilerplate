@@ -3,6 +3,7 @@ body {
   display: flex;
   flex-direction: row;
   font-family: "Open Sans";
+  height: 100%;
 }
 
 .wrapper {
@@ -18,12 +19,20 @@ hr {
   border-bottom-width: medium;
 }
 
+#sidebar {
+  background: #1F1F3D;
+  display: flex;
+  flex-direction: column;
+  /* height: 66.4em; */
+  width: 21em;
+  color: #E9E9F3;
+}
+
 #sidebar > button {
   color: #E9E9F3;
   background: #5356A4;
   align-self: center;
   border: 0.1em solid #353567;
-  height: 2.4em;
   width: 12em;
   font-family: "Open Sans";
   font-size: 1.4em;
@@ -42,15 +51,6 @@ hr {
   font-size: 1em;
   margin-left: 2.3em;
   margin-bottom: 2em;
-}
-
-#sidebar {
-  background: #1F1F3D;
-  display: flex;
-  flex-direction: column;
-  height: 66.4em;
-  width: 21em;
-  color: #E9E9F3;
 }
 
 /* user input section */
