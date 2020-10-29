@@ -6,112 +6,97 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <article id="sidebar">
+    <section id="sidebar">
       <h1>IdeaBox</h1>
       <hr>
       <h2>Filter Starred Ideas</h2>
       <button>Show Starred Ideas</button>
       <hr>
-    </article>
+    </section>
     <main class="wrapper">
-      <form class="user-section" id="input-section">
+      <form id="input-section">
         <label>Title</label>
-        <input type="text">
+        <input type="text" name="user-input-form" value="">
         <label>Body</label>
-        <input type="text" id="body-input">
+        <input type="text" name="user-input-form" value="" id="body-input-area">
         <button>Save</button>
         <div id="search-area">
-          <img src="./assets/search.svg" id="search-icon">
-          <input type="text" placeholder="Search ideas">
+          <img src="./assets/search.svg" alt ="search-icon" id="search-icon">
+          <input type="text" name="user-input-form" value="" placeholder="Search ideas">
         </div>
       </form>
-      <article class="user-section" id="card-section">
-        <section>
-          <div>
-            <img>
-            <button></button>
-            <img>
-            <button></button>
+      <section id="card-grid">
+        <article class="card-section">
+          <div id="favortie-delete-part">
+            <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+            <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
           </div>
-          <div>
+          <div id="message-part">
             <h3>Idea Title</h3>
             <p>Idea Body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
           </div>
-          <div>
-            <img>
-            <label>Comment</label>
-            <button></button>
+          <div id="comment-part">
+            <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
+            <label id="comment-word">Comment</label>
           </div>
-        </section>
-        <section>
-          <div>
-            <img>
-            <button></button>
-            <img>
-            <button></button>
+        </article>
+        <article class="card-section">
+          <div id="favortie-delete-part">
+            <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+            <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
           </div>
-          <div>
+          <div id="message-part">
             <h3>Idea Title</h3>
             <p>Idea Body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
           </div>
-          <div>
-            <img>
-            <label>Comment</label>
-            <button></button>
+          <div id="comment-part">
+            <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
+            <label id="comment-word">Comment</label>
           </div>
-        </section>
-        <section>
-          <div>
-            <img>
-            <button></button>
-            <img>
-            <button></button>
+        </article>
+        <article class="card-section">
+          <div id="favortie-delete-part">
+            <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+            <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
           </div>
-          <div>
+          <div id="message-part">
             <h3>Idea Title</h3>
             <p>Idea Body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
           </div>
-          <div>
-            <img>
-            <label>Comment</label>
-            <button></button>
+          <div id="comment-part">
+            <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
+            <label id="comment-word">Comment</label>
           </div>
-        </section>
-        <section>
-          <div>
-            <img>
-            <button></button>
-            <img>
-            <button></button>
+        </article>
+        <article class="card-section">
+          <div id="favortie-delete-part">
+            <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+            <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
           </div>
-          <div>
+          <div id="message-part">
             <h3>Idea Title</h3>
             <p>Idea Body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
           </div>
-          <div>
-            <img>
-            <label>Comment</label>
-            <button></button>
+          <div id="comment-part">
+            <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
+            <label id="comment-word">Comment</label>
           </div>
-        </section>
-        <section>
-          <div>
-            <img>
-            <button></button>
-            <img>
-            <button></button>
+        </article>
+        <article class="card-section">
+          <div id="favortie-delete-part">
+            <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+            <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
           </div>
-          <div>
+          <div id="message-part">
             <h3>Idea Title</h3>
             <p>Idea Body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
           </div>
-          <div>
-            <img>
-            <label>Comment</label>
-            <button></button>
+          <div id="comment-part">
+            <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
+            <label id="comment-word">Comment</label>
           </div>
-        </section>
-      </article>
+        </article>
+      </section>
     </main>
   </body>
   <script src="./src/ideas.js"></script>
