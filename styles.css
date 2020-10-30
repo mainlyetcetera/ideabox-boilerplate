@@ -169,8 +169,14 @@ input {
   height: 2em;
 }
 
+#favorite-delete-part > button {
+  background-color: #1F1F3D;
+  border: 0 solid #1F1F3D;
+  margin: 0.2em 0.2em;
+}
+
 #message-part {
-  border: 0.15em solid #353567;
+  border: 0.15em solid #1F1F3D;
   padding: 0em 1em;
   height: 13em;
 }

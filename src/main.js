@@ -47,10 +47,14 @@ function createIdea(title, body) {
 
 function displayCard() {
   cardGrid.innerHTML += `
-  <article class="card-section">
+  <article class="card-section" id="${currentIdea.id}">
     <div id="favorite-delete-part">
-      <img src="./assets/star.svg" alt="favorite-button" class="star-img">
-      <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
+      <button>
+        <img src="./assets/star.svg" alt="favorite-button" class="star-img">
+      </button>
+      <button>
+        <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
+      </button>
     </div>
     <div id="message-part">
       <h3>${currentIdea.title}</h3>
