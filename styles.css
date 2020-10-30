@@ -67,6 +67,7 @@ hr {
   background: #353567;
   border: 0.15em solid #5356A4;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .disabled-save-button {
