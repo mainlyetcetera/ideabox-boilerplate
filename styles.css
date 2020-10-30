@@ -1,8 +1,11 @@
 /* body section */
-body {
+body, html {
   display: flex;
   flex-direction: row;
   font-family: "Open Sans";
+  background: #EAEAF4;
+  width: 100%;
+  height: 100%;
 }
 
 .wrapper {
@@ -11,7 +14,7 @@ body {
   width: 75%;
 }
 
-/* sidebar section */
+/* ~~~~~sidebar section~~~~~~~~*/
 hr {
   width: 21em;
   border-color: #353567;
@@ -52,9 +55,25 @@ hr {
   margin-bottom: 2em;
 }
 
-/* user input section */
+/* ~~~~user input section~~~~~ */
 #body-input-area {
-  height: 8em;
+  height: 7em;
+  width: 31em;
+  margin: 0.5em 0 1.5em 0;
+  border: 0.15em solid #5356A4;
+}
+
+.enabled-save-button {
+  background: #353567;
+  border: 0.15em solid #5356A4;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.disabled-save-button {
+  background: #EAEAF4;
+  color: #000000;
+  cursor: not-allowed;
 }
 
 input {
@@ -73,20 +92,17 @@ input {
   font-weight: bold;
 }
 
-#input-section > button {
-  width: 26.4em;
-  height: 2.5em;
-  border: 0.15em solid #5356A4;
-  font-family: "Open Sans";
-  font-weight: bold;
-  color: #FFFFFF;
-  background-color: #353567;
-  margin-bottom: 2em;
-  font-size: 1em;
-}
-
 #input-section > label {
   margin-right: 24em;
+}
+
+#save-button{
+  width: 26.4em;
+  height: 2.5em;
+  font-family: "Open Sans";
+  font-weight: bold;
+  margin-bottom: 2em;
+  font-size: 1em;
 }
 
 #search-area {
@@ -107,14 +123,17 @@ input {
   padding: 0.9em;
 }
 
-
-/* card section */
+/* ~~~~~~card section~~~~~~~~ */
 #card-grid {
-  background: #EAEAF4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5em;
   padding: 1.5em;
+  height: 100%;
+}
+
+.card-overflow {
+  overflow: auto;
 }
 
 .card-section {
@@ -143,6 +162,13 @@ input {
   margin: 0 0.2em;
 }
 
+#favorite-delete-part {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1F1F3D;
+  height: 2em;
+}
+
 #message-part {
   border: 0.15em solid #353567;
   padding: 0em 1em;
@@ -153,11 +179,4 @@ input {
   height: 2em;
   width: 2em;
   margin: 0 0.2em;
-}
-
-#favortie-delete-part {
-  display: flex;
-  justify-content: space-between;
-  background-color: #1F1F3D;
-  height: 2em;
 }

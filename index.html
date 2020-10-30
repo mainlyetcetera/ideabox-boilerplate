@@ -16,16 +16,18 @@
     <main class="wrapper">
       <form id="input-section">
         <label>Title</label>
-        <input type="text" name="user-input-form" value="" id="title-input-area">
+        <input type="text" class="user-input-form" value="" id="title-input-area">
         <label>Body</label>
-        <input type="text" name="user-input-form" value="" id="body-input-area">
-        <button id="save-button">Save</button>
+        <textarea class="user-input-form" value="" id="body-input-area"></textarea>
+        <button class="disabled-save-button" id="save-button" disabled>Save</button>
         <div id="search-area">
           <img src="./assets/search.svg" alt ="search-icon" id="search-icon">
           <input type="text" name="user-input-form" value="" placeholder="Search ideas">
         </div>
       </form>
-      <section id="card-grid"></section>
+      <section class="card-overflow">
+        <div id="card-grid"></div>
+      </section>
     </main>
   </body>
   <script src="./src/idea.js"></script>
