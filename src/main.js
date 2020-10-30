@@ -48,7 +48,7 @@ function createIdea(title, body) {
 function displayCard() {
   cardGrid.innerHTML += `
   <article class="card-section">
-    <div id="favortie-delete-part">
+    <div id="favorite-delete-part">
       <img src="./assets/star.svg" alt="favorite-button" class="star-img">
       <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
     </div>

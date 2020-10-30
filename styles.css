@@ -72,6 +72,7 @@ hr {
 .disabled-save-button {
   background: #EAEAF4;
   color: #000000;
+  cursor: not-allowed;
 }
 
 input {
@@ -160,7 +161,7 @@ input {
   margin: 0 0.2em;
 }
 
-#favortie-delete-part {
+#favorite-delete-part {
   display: flex;
   justify-content: space-between;
   background-color: #1F1F3D;
