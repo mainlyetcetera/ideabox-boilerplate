@@ -1,49 +1,60 @@
-var saveButton = document.querySelector('.save-button');
+var saveButton = document.querySelector('#save-button');
+
 var titleField = document.querySelector('#title-input-area');
 var bodyField = document.querySelector('#body-input-area');
-var cardGrid = document.querySelector('#card-grid');
-var ideaList = [];
 
-titleField.addEventListener('keyup', toggleSaveButton);
-bodyField.addEventListener('keyup', toggleSaveButton);
+var cardGrid = document.querySelector('#card-grid');
+
+var ideaList = [];
+var currentIdea;
+
+titleField.addEventListener('keyup', disableEnableSaveButton);
+bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 
-window.onload = toggleSaveButton;
 
-function toggleSaveButton() {
+function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
     saveButton.disabled = true;
   } else {
     saveButton.disabled = false;
   }
-}
+  toggleSaveBtnColor()
+};
+
+function toggleSaveBtnColor() {
+  if (saveButton.disabled === false) {
+    saveButton.className = 'enabled-save-button'
+  } else {
+    saveButton.className = 'disabled-save-button'
+  }
+};
 
 function saveIdea(event) {
   event.preventDefault();
-  toggleSaveButton();
-  var currentIdea = createIdea();
+  disableEnableSaveButton();
+  createIdea();
   displayCard(currentIdea);
   addToList(currentIdea);
   clearForm();
-}
+};
 
 function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
-  var idea = new Idea(title, body);
-  return idea;
-}
+  currentIdea = new Idea(title, body);
+};
 
-function displayCard(idea) {
+function displayCard() {
   cardGrid.innerHTML += `
   <article class="card-section">
     <div id="favortie-delete-part">
-      <img src="./assets/star-active.svg" alt="favorite-button" class="star-img">
+      <img src="./assets/star.svg" alt="favorite-button" class="star-img">
       <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
     </div>
     <div id="message-part">
-      <h3>${idea.title}</h3>
-      <p>${idea.body}</p>
+      <h3>${currentIdea.title}</h3>
+      <p>${currentIdea.body}</p>
     </div>
     <div id="comment-part">
       <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
@@ -51,14 +62,14 @@ function displayCard(idea) {
     </div>
   </article>
   `;
-}
+};
 
-function addToList(idea) {
-  ideaList.push(idea);
-}
+function addToList() {
+  ideaList.push(currentIdea);
+};
 
 function clearForm() {
   titleField.value = '';
   bodyField.value = '';
-  toggleSaveButton();
-}
+  disableEnableSaveButton();
+};
