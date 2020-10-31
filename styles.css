@@ -181,7 +181,12 @@ input {
   height: 13em;
 }
 
-.star-img {
+.star-img-white {
+  height: 2em;
+  width: 2em;
+  margin: 0 0.2em;
+}
+.star-img-red {
   height: 2em;
   width: 2em;
   margin: 0 0.2em;
