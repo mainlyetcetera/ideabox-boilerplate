@@ -8,6 +8,8 @@ var cardGrid = document.querySelector('#card-grid');
 var ideaList = [];
 var currentIdea;
 
+
+
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
 
@@ -76,6 +78,7 @@ function createCard(ideaToDisplay) {
 
 function addToList() {
   ideaList.push(currentIdea);
+  currentIdea.saveToStorage();
 };
 
 function clearForm() {
@@ -95,6 +98,7 @@ function favoriteOrDeleteCard(event) {
 function deleteCard(event) {
   for (var i = 0; i < ideaList.length; i++) {
     if (event.target.id === `${ideaList[i].id}`) {
+      ideaList[i].deleteFromStorage();
       ideaList.splice(i, 1);
     }
   }
@@ -107,11 +111,9 @@ function favoriteCard(event) {
     if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-white') {
       event.target.src = "./assets/star-active.svg";
       event.target.className = 'star-img-red';
-      console.log(event.target);
     } else if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-red') {
       event.target.src = "./assets/star.svg";
       event.target.className = 'star-img-white';
-      console.log(event.target);
     }
   }
 };
