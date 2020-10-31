@@ -5,13 +5,17 @@ class Idea {
     this.body = body;
     this.star = false;
   }
+
   saveToStorage() {
-
+    localStorage.setItem(this.id, JSON.stringify(this));
   }
+
   deleteFromStorage() {
-
+    localStorage.removeItem(this.id);
   }
+
   updateIdea() {
-
+    localStorage.setItem(this.id, JSON.stringify(this));
   }
+
 }
