@@ -10,8 +10,10 @@ var currentIdea;
 
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
+
 saveButton.addEventListener('click', saveIdea);
 
+cardGrid.addEventListener('click', favoriteOrDeleteCard);
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -19,7 +21,8 @@ function disableEnableSaveButton() {
   } else {
     saveButton.disabled = false;
   }
-  toggleSaveBtnColor()
+
+  toggleSaveBtnColor();
 };
 
 function toggleSaveBtnColor() {
@@ -34,8 +37,7 @@ function saveIdea(event) {
   event.preventDefault();
   disableEnableSaveButton();
   createIdea();
-  displayCard(currentIdea);
-  addToList(currentIdea);
+  displayCard();
   clearForm();
 };
 
@@ -43,18 +45,26 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
+  addToList(createIdea);
 };
 
 function displayCard() {
+  cardGrid.innerHTML = '';
+  for(var i = 0; i < ideaList.length; i++) {
+    createCard(ideaList[i]);
+  };
+};
+
+function createCard(ideaToDisplay) {
   cardGrid.innerHTML += `
-  <article class="card-section">
+  <article class="card-section" id="${ideaToDisplay.id}">
     <div id="favorite-delete-part">
-      <img src="./assets/star.svg" alt="favorite-button" class="star-img">
-      <img src="./assets/delete.svg" alt="delete-button" class="delete-img">
+      <img src="./assets/star.svg" alt="favorite-button" class="star-img-white" id="${ideaToDisplay.id}">
+      <img src="./assets/delete.svg" alt="delete-button" class="delete-img" id="${ideaToDisplay.id}">
     </div>
     <div id="message-part">
-      <h3>${currentIdea.title}</h3>
-      <p>${currentIdea.body}</p>
+      <h3>${ideaToDisplay.title}</h3>
+      <p>${ideaToDisplay.body}</p>
     </div>
     <div id="comment-part">
       <img src="./assets/comment.svg" alt="comment-button" id="comment-img">
@@ -72,4 +82,36 @@ function clearForm() {
   titleField.value = '';
   bodyField.value = '';
   disableEnableSaveButton();
+};
+
+function favoriteOrDeleteCard(event) {
+  if (event.target.className === 'delete-img') {
+    deleteCard(event);
+  } else if (event.target.className === 'star-img-white'|| event.target.className === 'star-img-red') {
+    favoriteCard(event);
+  }
+};
+
+function deleteCard(event) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (event.target.id === `${ideaList[i].id}`) {
+      ideaList.splice(i, 1);
+    }
+  }
+
+  displayCard();
+};
+
+function favoriteCard(event) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-white') {
+      event.target.src = "./assets/star-active.svg";
+      event.target.className = 'star-img-red';
+      console.log(event.target);
+    } else if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-red') {
+      event.target.src = "./assets/star.svg";
+      event.target.className = 'star-img-white';
+      console.log(event.target);
+    }
+  }
 };
