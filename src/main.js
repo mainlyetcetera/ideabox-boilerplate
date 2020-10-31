@@ -8,7 +8,7 @@ var cardGrid = document.querySelector('#card-grid');
 var ideaList = [];
 var currentIdea;
 
-
+window.onload = loadFromStorage;
 
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
@@ -117,3 +117,13 @@ function favoriteCard(event) {
     }
   }
 };
+
+function loadFromStorage() {
+  for (var key in localStorage) {
+    if (localStorage.length > 0 && typeof localStorage[key] === 'string') {
+      ideaList.push(JSON.parse(localStorage[key]));
+    }
+  }
+
+  displayCard();
+}
