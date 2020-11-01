@@ -122,11 +122,10 @@ function loadFromStorage() {
   for (var key in localStorage) {
     if (typeof localStorage[key] === 'string') {
       var parsed = JSON.parse(localStorage[key]);
-      var cardToMakeIdeaAgain = new Idea(parsed.title, parsed.body);
+      var cardToMakeIdeaAgain = new Idea(parsed.title, parsed.body, parsed.id);
       ideaList.push(cardToMakeIdeaAgain);
     }
   }
 
-  console.log(localStorage);
   displayCard();
 }
