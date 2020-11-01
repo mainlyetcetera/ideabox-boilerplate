@@ -47,7 +47,7 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
-  addToList(createIdea);
+  addToList(createIdea);  
 };
 
 function displayCard() {
@@ -120,7 +120,7 @@ function favoriteCard(event) {
 
 function loadFromStorage() {
   for (var key in localStorage) {
-    if (localStorage.length > 0 && typeof localStorage[key] === 'string') {
+    if (typeof localStorage[key] === 'string') {
       ideaList.push(JSON.parse(localStorage[key]));
     }
   }
