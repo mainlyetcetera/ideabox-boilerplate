@@ -39,6 +39,7 @@ function saveIdea(event) {
   event.preventDefault();
   disableEnableSaveButton();
   createIdea();
+  addToList(createIdea);
   displayCard();
   clearForm();
 };
@@ -47,7 +48,6 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
-  addToList(createIdea);  
 };
 
 function displayCard() {
@@ -121,9 +121,12 @@ function favoriteCard(event) {
 function loadFromStorage() {
   for (var key in localStorage) {
     if (typeof localStorage[key] === 'string') {
-      ideaList.push(JSON.parse(localStorage[key]));
+      var parsed = JSON.parse(localStorage[key]);
+      var cardToMakeIdeaAgain = new Idea(parsed.title, parsed.body);
+      ideaList.push(cardToMakeIdeaAgain);
     }
   }
 
+  console.log(localStorage);
   displayCard();
 }

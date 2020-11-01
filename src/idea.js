@@ -15,7 +15,7 @@ class Idea {
   }
 
   updateIdea() {
-    localStorage.setItem(this.id, JSON.stringify(this));
+    saveToStorage();
   }
 
 }
