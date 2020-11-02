@@ -6,16 +6,16 @@ class Idea {
     this.star = false;
   }
 
-  saveToStorage() {
-    localStorage.setItem(this.id, JSON.stringify(this));
+  saveToStorage(gblList) {
+    localStorage.setItem('ideas', JSON.stringify(gblList));
   }
 
   deleteFromStorage() {    
-    localStorage.removeItem(this.id);
+    
   }
 
   updateIdea() {
-    saveToStorage();
+    
   }
 
 }

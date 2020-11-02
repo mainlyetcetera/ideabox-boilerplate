@@ -9,12 +9,9 @@ var ideaList = [];
 var currentIdea;
 
 window.onload = loadFromStorage;
-
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
-
 saveButton.addEventListener('click', saveIdea);
-
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
 
 function disableEnableSaveButton() {
