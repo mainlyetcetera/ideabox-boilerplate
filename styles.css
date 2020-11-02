@@ -164,6 +164,13 @@ input {
   margin: 0 0.2em;
 }
 
+.delete-img:hover {
+  content: url(./assets/delete-active.svg);
+  height: 2em;
+  width: 2em;
+  margin: 0 0.2em;
+}
+
 #favorite-delete-part {
   display: flex;
   justify-content: space-between;
