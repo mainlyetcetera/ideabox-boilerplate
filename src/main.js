@@ -16,7 +16,7 @@ bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
 showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
-searchBar.addEventListener('keyup', searchIdea)
+searchBar.addEventListener('keyup', searchIdea);
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -30,9 +30,9 @@ function disableEnableSaveButton() {
 
 function toggleSaveBtnColor() {
   if (saveButton.disabled === false) {
-    saveButton.className = 'enabled-save-button'
+    saveButton.className = 'enabled-save-button';
   } else {
-    saveButton.className = 'disabled-save-button'
+    saveButton.className = 'disabled-save-button';
   }
 }
 
@@ -48,7 +48,7 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
-  ideaList.push(currentIdea)
+  ideaList.push(currentIdea);
   currentIdea.saveToStorage(ideaList);
 }
 
@@ -60,11 +60,11 @@ function displayCard(list) {
 }
 
 function createCard(ideaToDisplay) {
-  var changeStarColor = 'star-img-white'
-  var changeImgSrc = './assets/star.svg'
+  var changeStarColor = 'star-img-white';
+  var changeImgSrc = './assets/star.svg';
   if (ideaToDisplay.star === true) {
-    changeStarColor = 'star-img-red'
-    changeImgSrc = './assets/star-active.svg'
+    changeStarColor = 'star-img-red';
+    changeImgSrc = './assets/star-active.svg';
   }
 
   cardGrid.innerHTML += `
@@ -127,20 +127,20 @@ function favoriteCard(event) {
 }
 
 function displayFavoriteCard() {
-  showFavoriteIdeaButton.innerText = 'Show All Ideas'
+  showFavoriteIdeaButton.innerText = 'Show All Ideas';
   cardGrid.innerHTML = '';
   for(var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].star === true) {
-    createCard(ideaList[i]);
+      createCard(ideaList[i]);
     }
   }
 }
 
 function toggleCardDisplay() {
   if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
-    displayFavoriteCard()
+    displayFavoriteCard();
   } else {
-    showFavoriteIdeaButton.innerText = 'Show Starred Ideas'
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas';
     displayCard(ideaList);
   }
 }
@@ -148,12 +148,12 @@ function toggleCardDisplay() {
 function searchIdea() {
   var searchValue = searchBar.value.toLowerCase();
   cardGrid.innerHTML = '';
-  var matchIdea = []
+  var matchIdea = [];
   for (var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
-      matchIdea.push(ideaList[i])
+      matchIdea.push(ideaList[i]);
     }
   }
 
-  displayCard(matchIdea)
+  displayCard(matchIdea);
 }
