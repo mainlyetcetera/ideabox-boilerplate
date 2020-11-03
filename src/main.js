@@ -14,7 +14,7 @@ titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
-showFavoriteIdea.addEventListener('click', displayFavoriteCard);
+showFavoriteIdea.addEventListener('click', toggleCardDisplay);
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -124,6 +124,7 @@ function favoriteCard(event) {
 };
 
 function displayFavoriteCard() {
+  showFavoriteIdea.innerText = "Show All Ideas"
   cardGrid.innerHTML = '';
   for(var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].star === true) {
@@ -131,3 +132,12 @@ function displayFavoriteCard() {
     }
   }
 };
+
+function toggleCardDisplay() {
+  if (showFavoriteIdea.innerText === 'Show Starred Ideas') {
+    displayFavoriteCard()
+  } else {
+    showFavoriteIdea.innerText = 'Show Starred Ideas'
+    displayCard();
+  }
+}
