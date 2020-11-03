@@ -1,4 +1,5 @@
 var saveButton = document.querySelector('#save-button');
+var showFavoriteIdea = document.querySelector('#favorite-idea')
 
 var titleField = document.querySelector('#title-input-area');
 var bodyField = document.querySelector('#body-input-area');
@@ -13,6 +14,7 @@ titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
+showFavoriteIdea.addEventListener('click', displayFavoriteCard);
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
