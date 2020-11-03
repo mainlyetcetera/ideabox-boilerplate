@@ -61,6 +61,7 @@ hr {
   width: 31em;
   margin: 0.5em 0 1.5em 0;
   border: 0.15em solid #5356A4;
+  font-family: 'Open Sans';
 }
 
 .enabled-save-button {
@@ -81,6 +82,7 @@ input {
   height: 3em;
   border: 0.15em solid #5356A4;
   margin: 0.5em 0 2em 0;
+  font-family: 'Open Sans';
 }
 
 #input-section {
@@ -157,6 +159,13 @@ input {
 }
 
 .delete-img {
+  height: 2em;
+  width: 2em;
+  margin: 0 0.2em;
+}
+
+.delete-img:hover {
+  content: url(./assets/delete-active.svg);
   height: 2em;
   width: 2em;
   margin: 0 0.2em;

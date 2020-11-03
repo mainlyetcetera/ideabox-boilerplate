@@ -1,19 +1,22 @@
 var saveButton = document.querySelector('#save-button');
+var showFavoriteIdeaButton = document.querySelector('#favorite-idea');
+var searchBar = document.querySelector('#search-bar');
 
 var titleField = document.querySelector('#title-input-area');
 var bodyField = document.querySelector('#body-input-area');
 
 var cardGrid = document.querySelector('#card-grid');
 
-var ideaList = [];
+var ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
 var currentIdea;
 
+window.onload = displayCard(ideaList);
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
-
 saveButton.addEventListener('click', saveIdea);
-
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
+showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
+searchBar.addEventListener('keyup', searchIdea)
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -37,7 +40,7 @@ function saveIdea(event) {
   event.preventDefault();
   disableEnableSaveButton();
   createIdea();
-  displayCard();
+  displayCard(ideaList);
   clearForm();
 };
 
@@ -45,21 +48,29 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
-  addToList(createIdea);
+  ideaList.push(currentIdea)
+  currentIdea.saveToStorage(ideaList);
 };
 
-function displayCard() {
+function displayCard(list) {
   cardGrid.innerHTML = '';
-  for(var i = 0; i < ideaList.length; i++) {
-    createCard(ideaList[i]);
+  for(var i = 0; i < list.length; i++) {
+    createCard(list[i]);
   };
 };
 
 function createCard(ideaToDisplay) {
+  var changeStarColor = 'star-img-white'
+  var changeImgSrc = './assets/star.svg'
+  if (ideaToDisplay.star === true) {
+    changeStarColor = 'star-img-red'
+    changeImgSrc = './assets/star-active.svg'
+  }
+
   cardGrid.innerHTML += `
   <article class="card-section" id="${ideaToDisplay.id}">
     <div id="favorite-delete-part">
-      <img src="./assets/star.svg" alt="favorite-button" class="star-img-white" id="${ideaToDisplay.id}">
+      <img src="${changeImgSrc}" alt="favorite-button" class="${changeStarColor}" id="${ideaToDisplay.id}">
       <img src="./assets/delete.svg" alt="delete-button" class="delete-img" id="${ideaToDisplay.id}">
     </div>
     <div id="message-part">
@@ -72,10 +83,6 @@ function createCard(ideaToDisplay) {
     </div>
   </article>
   `;
-};
-
-function addToList() {
-  ideaList.push(currentIdea);
 };
 
 function clearForm() {
@@ -99,7 +106,8 @@ function deleteCard(event) {
     }
   }
 
-  displayCard();
+  localStorage.setItem('ideas', JSON.stringify(ideaList));
+  displayCard(ideaList);
 };
 
 function favoriteCard(event) {
@@ -107,11 +115,44 @@ function favoriteCard(event) {
     if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-white') {
       event.target.src = "./assets/star-active.svg";
       event.target.className = 'star-img-red';
-      console.log(event.target);
+      ideaList[i].star = true;
     } else if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-red') {
       event.target.src = "./assets/star.svg";
       event.target.className = 'star-img-white';
-      console.log(event.target);
+      ideaList[i].star = false;
     }
   }
+  localStorage.setItem('ideas', JSON.stringify(ideaList));
+};
+
+function displayFavoriteCard() {
+  showFavoriteIdeaButton.innerText = 'Show All Ideas'
+  cardGrid.innerHTML = '';
+  for(var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].star === true) {
+    createCard(ideaList[i]);
+    }
+  }
+};
+
+function toggleCardDisplay() {
+  if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
+    displayFavoriteCard()
+  } else {
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas'
+    displayCard(ideaList);
+  }
+};
+
+function searchIdea() {
+  var searchValue = searchBar.value.toLowerCase();
+  cardGrid.innerHTML = '';
+  var matchIdea = []
+  for (var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
+      matchIdea.push(ideaList[i])
+    }
+  }
+
+  displayCard(matchIdea)
 };
