@@ -58,10 +58,17 @@ function displayCard() {
 };
 
 function createCard(ideaToDisplay) {
+  var changeStarColor = 'star-img-white'
+  var changeImgSrc = './assets/star.svg'
+  if (ideaToDisplay.star === true) {
+    changeStarColor = 'star-img-red'
+    changeImgSrc = './assets/star-active.svg'
+  }
+
   cardGrid.innerHTML += `
   <article class="card-section" id="${ideaToDisplay.id}">
     <div id="favorite-delete-part">
-      <img src="./assets/star.svg" alt="favorite-button" class="star-img-white" id="${ideaToDisplay.id}">
+      <img src="${changeImgSrc}" alt="favorite-button" class="${changeStarColor}" id="${ideaToDisplay.id}">
       <img src="./assets/delete.svg" alt="delete-button" class="delete-img" id="${ideaToDisplay.id}">
     </div>
     <div id="message-part">
