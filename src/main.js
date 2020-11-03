@@ -5,10 +5,10 @@ var bodyField = document.querySelector('#body-input-area');
 
 var cardGrid = document.querySelector('#card-grid');
 
-var ideaList = [];
+var ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
 var currentIdea;
 
-window.onload = loadFromStorage;
+window.onload = displayCard;
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
@@ -36,7 +36,6 @@ function saveIdea(event) {
   event.preventDefault();
   disableEnableSaveButton();
   createIdea();
-  addToList(createIdea);
   displayCard();
   clearForm();
 };
@@ -45,6 +44,8 @@ function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
+  ideaList.push(currentIdea)
+  currentIdea.saveToStorage(ideaList);
 };
 
 function displayCard() {
@@ -73,11 +74,6 @@ function createCard(ideaToDisplay) {
   `;
 };
 
-function addToList() {
-  ideaList.push(currentIdea);
-  currentIdea.saveToStorage();
-};
-
 function clearForm() {
   titleField.value = '';
   bodyField.value = '';
@@ -95,11 +91,11 @@ function favoriteOrDeleteCard(event) {
 function deleteCard(event) {
   for (var i = 0; i < ideaList.length; i++) {
     if (event.target.id === `${ideaList[i].id}`) {
-      ideaList[i].deleteFromStorage();
       ideaList.splice(i, 1);
     }
   }
 
+  localStorage.setItem('ideas', JSON.stringify(ideaList));
   displayCard();
 };
 
