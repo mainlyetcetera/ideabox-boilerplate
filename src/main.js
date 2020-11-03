@@ -104,21 +104,21 @@ function favoriteCard(event) {
     if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-white') {
       event.target.src = "./assets/star-active.svg";
       event.target.className = 'star-img-red';
+      ideaList[i].star = true;
     } else if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-red') {
       event.target.src = "./assets/star.svg";
       event.target.className = 'star-img-white';
+      ideaList[i].star = false;
+    }
+  }
+  localStorage.setItem('ideas', JSON.stringify(ideaList));
+};
+
+function displayFavoriteCard() {
+  cardGrid.innerHTML = '';
+  for(var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].star === true) {
+    createCard(ideaList[i]);
     }
   }
 };
-
-function loadFromStorage() {
-  for (var key in localStorage) {
-    if (typeof localStorage[key] === 'string') {
-      var parsed = JSON.parse(localStorage[key]);
-      var cardToMakeIdeaAgain = new Idea(parsed.title, parsed.body, parsed.id);
-      ideaList.push(cardToMakeIdeaAgain);
-    }
-  }
-
-  displayCard();
-}
