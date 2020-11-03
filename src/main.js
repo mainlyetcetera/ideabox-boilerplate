@@ -1,5 +1,6 @@
 var saveButton = document.querySelector('#save-button');
-var showFavoriteIdea = document.querySelector('#favorite-idea')
+var showFavoriteIdeaButton = document.querySelector('#favorite-idea');
+var searchBar = document.querySelector('#search-bar');
 
 var titleField = document.querySelector('#title-input-area');
 var bodyField = document.querySelector('#body-input-area');
@@ -9,12 +10,13 @@ var cardGrid = document.querySelector('#card-grid');
 var ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
 var currentIdea;
 
-window.onload = displayCard;
+window.onload = displayCard(ideaList);
 titleField.addEventListener('keyup', disableEnableSaveButton);
 bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
-showFavoriteIdea.addEventListener('click', toggleCardDisplay);
+showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
+searchBar.addEventListener('keyup', searchIdea)
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -38,7 +40,7 @@ function saveIdea(event) {
   event.preventDefault();
   disableEnableSaveButton();
   createIdea();
-  displayCard();
+  displayCard(ideaList);
   clearForm();
 };
 
@@ -50,10 +52,10 @@ function createIdea(title, body) {
   currentIdea.saveToStorage(ideaList);
 };
 
-function displayCard() {
+function displayCard(list) {
   cardGrid.innerHTML = '';
-  for(var i = 0; i < ideaList.length; i++) {
-    createCard(ideaList[i]);
+  for(var i = 0; i < list.length; i++) {
+    createCard(list[i]);
   };
 };
 
@@ -105,7 +107,7 @@ function deleteCard(event) {
   }
 
   localStorage.setItem('ideas', JSON.stringify(ideaList));
-  displayCard();
+  displayCard(ideaList);
 };
 
 function favoriteCard(event) {
@@ -134,10 +136,23 @@ function displayFavoriteCard() {
 };
 
 function toggleCardDisplay() {
-  if (showFavoriteIdea.innerText === 'Show Starred Ideas') {
+  if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
     displayFavoriteCard()
   } else {
-    showFavoriteIdea.innerText = 'Show Starred Ideas'
-    displayCard();
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas'
+    displayCard(ideaList);
   }
-}
+};
+
+function searchIdea() {
+  var searchValue = searchBar.value.toLowerCase();
+  cardGrid.innerHTML = '';
+  var matchIdea = []
+  for (var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].title.includes(searchValue) || ideaList[i].body.includes(searchValue)) {
+      matchIdea.push(ideaList[i])
+    }
+  }
+
+  displayCard(matchIdea)
+};
