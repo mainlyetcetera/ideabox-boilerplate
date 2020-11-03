@@ -149,7 +149,7 @@ function searchIdea() {
   cardGrid.innerHTML = '';
   var matchIdea = []
   for (var i = 0; i < ideaList.length; i++) {
-    if (ideaList[i].title.includes(searchValue) || ideaList[i].body.includes(searchValue)) {
+    if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
       matchIdea.push(ideaList[i])
     }
   }
