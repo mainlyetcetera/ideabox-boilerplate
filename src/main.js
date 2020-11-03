@@ -126,7 +126,7 @@ function favoriteCard(event) {
 };
 
 function displayFavoriteCard() {
-  showFavoriteIdea.innerText = "Show All Ideas"
+  showFavoriteIdeaButton.innerText = 'Show All Ideas'
   cardGrid.innerHTML = '';
   for(var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].star === true) {
