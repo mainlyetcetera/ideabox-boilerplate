@@ -56,7 +56,7 @@ function displayCard(list) {
   cardGrid.innerHTML = '';
   for(var i = 0; i < list.length; i++) {
     createCard(list[i]);
-  };
+  }
 }
 
 function createCard(ideaToDisplay) {
@@ -122,6 +122,7 @@ function favoriteCard(event) {
       ideaList[i].star = false;
     }
   }
+
   localStorage.setItem('ideas', JSON.stringify(ideaList));
 }
 
