@@ -94,5 +94,5 @@ JS, HTML, & CSS
 
 ## Contributors
     Thank you for your contributions!
-For his help and direction as a reviewer: <a href="https://github.com/Corbinj22">Justin Corbin</a>
-For his help and direction as a reviewer: <a href="https://github.com/Josephhaefling ">Joe Haefling</a>
+* For his help and direction as a reviewer: <a href="https://github.com/Corbinj22">Justin Corbin</a>
+* For his help and direction as a reviewer: <a href="https://github.com/Josephhaefling ">Joe Haefling</a>
