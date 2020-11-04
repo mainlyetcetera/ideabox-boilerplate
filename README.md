@@ -15,6 +15,7 @@ The primary goal of [IdeaBox](https://github.com/richardltyler/ideabox-boilerpla
 
 ## Motivation
 The motivation behind this project's creation was to build an application that helps users save ideas that come into their mind on the spot if they do not have a pencil or paper around to write it down, while we focused on writing DRY JS and solidifying good habits in git workflow.
+
 ---
 
 ## Features
@@ -29,6 +30,7 @@ Got an idea? Enter in a title and your idea in the body area. Once everything is
 <p align = "center">
 <img src="https://media.giphy.com/media/2OLnbrlVMtIplb5PWj/giphy.gif">
 </p>
+
   <details>
     <summary>Under the Hood</summary>
     Using querySelector and `.value`, we take the user inputs we created and a function and interpolate the HTML to create the card with the users inputs from both the title field and body field. User must input text into both fields before the button will be clickable.
@@ -72,6 +74,7 @@ Realized your idea wasn't the best idea you had? Users can delete their idea by 
 
 ## Technologies
 JS, HTML, & CSS
+
 ## Deployment
 ### https://richardltyler.github.io/ideabox-boilerplate/
 ## Authors
@@ -92,3 +95,4 @@ JS, HTML, & CSS
 ## Contributors
     Thank you for your contributions!
 For his help and direction as a reviewer: <a href="https://github.com/Corbinj22">Justin Corbin</a>
+For his help and direction as a reviewer: <a href="https://github.com/Josephhaefling ">Joe Haefling</a>
