@@ -14,7 +14,7 @@
 The primary goal of [IdeaBox](https://github.com/richardltyler/ideabox-boilerplate) is for users to be able to save and favorite ideas that come across their mind right away so that they won't forget about it. ([Project Specs](https://frontend.turing.io/projects/module-1/ideabox-group.html)).
 
 ## Motivation
-The motivation behind this project's creation was to build an application to help the users save ideas that come into their mind on the spot if they do not have a pencil or paper around to write it down, while we focused on writing DRY JS and solidifying good habits in git workflow.
+The motivation behind this project's creation was to build an application that helps users save ideas that come into their mind on the spot if they do not have a pencil or paper around to write it down, while we focused on writing DRY JS and solidifying good habits in git workflow.
 ---
 
 ## Features
@@ -30,7 +30,7 @@ Got an idea? Enter in a title and your idea in the body area. Once everything is
 <img src="https://media.giphy.com/media/2OLnbrlVMtIplb5PWj/giphy.gif">
 </p>
   <details>
-    <summary>**Under the Hood**</summary>
+    <summary>Under the Hood</summary>
     Using querySelector and `.value`, we take the user inputs we created and a function and interpolate the HTML to create the card with the users inputs from both the title field and body field. User must input text into both fields before the button will be clickable.
   </details>
 
@@ -40,7 +40,7 @@ Have so many ideas? Need to find a specific one? Here, a user can type in a keyw
 <img src="https://media.giphy.com/media/wLqHY54ouAi2GmeOGy/giphy.gif">
 </p>
     <details>
-      <summary>**Under the Hood**</summary>
+      <summary>Under the Hood</summary>
       First a querySelector is used to access the search bar from HTML. Next by using `.value`, we can now take user input. Then by using a for loop, JS will go through our array, and using the method of `include`, we can search for any cards that include what the user input has typed in and add it to our new array of `matchIdea` to populate all matching cards.
     </details>
 
@@ -50,7 +50,7 @@ Have ideas that you love? Users can favorite their ideas by clicking on the star
 <img src="https://media.giphy.com/media/tJcd1EsG3GUGBID5Gd/giphy.gif">
 </p>
   <details>
-    <summary>**Under the Hood**</summary>
+    <summary>Under the Hood</summary>
     Using an event listener on the star, when it is clicked, our function  `favoriteCard` is invoked and within this function we are using event delegation to change the image source of the star as well as the className and changing our star value from our idea class from false to true and vice versa for unfavoriting a star.
   </details>
 
@@ -60,7 +60,7 @@ Realized your idea wasn't the best idea you had? Users can delete their idea by 
 <img src="https://media.giphy.com/media/o6J9c88dLv96QZRuru/giphy.gif">
 </p>
   <details>
-    <summary>**Under the Hood**</summary>
+    <summary>Under the Hood</summary>
      Using an event listener on the `x`, when it is clicked on, our function `deleteCard` is invoked, and within this function we are using event delegation to target the card's unique id. We are saying if that unique id is strictly equal to one another we are going to remove it from our array. After we remove it from our array, we are updating our local storage to show the updated array.
   </details>
 
