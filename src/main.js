@@ -16,7 +16,7 @@ bodyField.addEventListener('keyup', disableEnableSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
 showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
-searchBar.addEventListener('keyup', searchIdea)
+searchBar.addEventListener('keyup', searchIdea);
 
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
@@ -26,15 +26,15 @@ function disableEnableSaveButton() {
   }
 
   toggleSaveBtnColor();
-};
+}
 
 function toggleSaveBtnColor() {
   if (saveButton.disabled === false) {
-    saveButton.className = 'enabled-save-button'
+    saveButton.className = 'enabled-save-button';
   } else {
-    saveButton.className = 'disabled-save-button'
+    saveButton.className = 'disabled-save-button';
   }
-};
+}
 
 function saveIdea(event) {
   event.preventDefault();
@@ -42,29 +42,29 @@ function saveIdea(event) {
   createIdea();
   displayCard(ideaList);
   clearForm();
-};
+}
 
 function createIdea(title, body) {
   title = titleField.value;
   body = bodyField.value;
   currentIdea = new Idea(title, body);
-  ideaList.push(currentIdea)
+  ideaList.push(currentIdea);
   currentIdea.saveToStorage(ideaList);
-};
+}
 
 function displayCard(list) {
   cardGrid.innerHTML = '';
-  for(var i = 0; i < list.length; i++) {
+  for (var i = 0; i < list.length; i++) {
     createCard(list[i]);
-  };
-};
+  }
+}
 
 function createCard(ideaToDisplay) {
-  var changeStarColor = 'star-img-white'
-  var changeImgSrc = './assets/star.svg'
+  var changeStarColor = 'star-img-white';
+  var changeImgSrc = './assets/star.svg';
   if (ideaToDisplay.star === true) {
-    changeStarColor = 'star-img-red'
-    changeImgSrc = './assets/star-active.svg'
+    changeStarColor = 'star-img-red';
+    changeImgSrc = './assets/star-active.svg';
   }
 
   cardGrid.innerHTML += `
@@ -83,13 +83,13 @@ function createCard(ideaToDisplay) {
     </div>
   </article>
   `;
-};
+}
 
 function clearForm() {
   titleField.value = '';
   bodyField.value = '';
   disableEnableSaveButton();
-};
+}
 
 function favoriteOrDeleteCard(event) {
   if (event.target.className === 'delete-img') {
@@ -97,7 +97,7 @@ function favoriteOrDeleteCard(event) {
   } else if (event.target.className === 'star-img-white'|| event.target.className === 'star-img-red') {
     favoriteCard(event);
   }
-};
+}
 
 function deleteCard(event) {
   for (var i = 0; i < ideaList.length; i++) {
@@ -108,7 +108,7 @@ function deleteCard(event) {
 
   localStorage.setItem('ideas', JSON.stringify(ideaList));
   displayCard(ideaList);
-};
+}
 
 function favoriteCard(event) {
   for (var i = 0; i < ideaList.length; i++) {
@@ -122,37 +122,38 @@ function favoriteCard(event) {
       ideaList[i].star = false;
     }
   }
+
   localStorage.setItem('ideas', JSON.stringify(ideaList));
-};
+}
 
 function displayFavoriteCard() {
-  showFavoriteIdeaButton.innerText = 'Show All Ideas'
+  showFavoriteIdeaButton.innerText = 'Show All Ideas';
   cardGrid.innerHTML = '';
-  for(var i = 0; i < ideaList.length; i++) {
+  for (var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].star === true) {
-    createCard(ideaList[i]);
+      createCard(ideaList[i]);
     }
   }
-};
+}
 
 function toggleCardDisplay() {
   if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
-    displayFavoriteCard()
+    displayFavoriteCard();
   } else {
-    showFavoriteIdeaButton.innerText = 'Show Starred Ideas'
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas';
     displayCard(ideaList);
   }
-};
+}
 
 function searchIdea() {
   var searchValue = searchBar.value.toLowerCase();
   cardGrid.innerHTML = '';
-  var matchIdea = []
+  var matchIdea = [];
   for (var i = 0; i < ideaList.length; i++) {
     if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
-      matchIdea.push(ideaList[i])
+      matchIdea.push(ideaList[i]);
     }
   }
 
-  displayCard(matchIdea)
-};
+  displayCard(matchIdea);
+}
