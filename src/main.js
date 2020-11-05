@@ -111,14 +111,15 @@ function deleteCard(event) {
 }
 
 function favoriteCard(event) {
+  var target = event.target;
   for (var i = 0; i < ideaList.length; i++) {
-    if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-white') {
-      event.target.src = "./assets/star-active.svg";
-      event.target.className = 'star-img-red';
+    if (target.id === `${ideaList[i].id}` && target.className === 'star-img-white') {
+      target.src = "./assets/star-active.svg";
+      target.className = 'star-img-red';
       ideaList[i].star = true;
-    } else if (event.target.id === `${ideaList[i].id}` && event.target.className === 'star-img-red') {
-      event.target.src = "./assets/star.svg";
-      event.target.className = 'star-img-white';
+    } else if (target.id === `${ideaList[i].id}` && target.className === 'star-img-red') {
+      target.src = "./assets/star.svg";
+      target.className = 'star-img-white';
       ideaList[i].star = false;
     }
   }
