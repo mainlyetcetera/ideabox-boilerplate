@@ -10,12 +10,4 @@ class Idea {
     localStorage.setItem('ideas', JSON.stringify(gblList));
   }
 
-  deleteFromStorage() {    
-    
-  }
-
-  updateIdea() {
-    
-  }
-
 }
