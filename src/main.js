@@ -103,14 +103,11 @@ const displayFavoriteCard = () => {
   ideaList.forEach(idea => idea.star ? createCard(idea) : idea);
 }
 
-function toggleCardDisplay() {
-  if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
-    displayFavoriteCard();
-  } else {
-    showFavoriteIdeaButton.innerText = 'Show Starred Ideas';
-    displayCard(ideaList);
-  }
-}
+const toggleCardDisplay = () => showFavoriteIdeaButton.innerText === 'Show Starred Ideas' ?
+  displayFavoriteCard() : (
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas',
+    displayCard(ideaList)    
+  )
 
 function searchIdea() {
   var searchValue = searchBar.value.toLowerCase();
