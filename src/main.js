@@ -41,11 +41,6 @@ const displayCard = list => {
 const createCard = ideaToDisplay => {
   let changeStarColor;
   let changeImgSrc;
-  // if (ideaToDisplay.star === true) {
-  //   changeStarColor = 'star-img-red';
-  //   changeImgSrc = './assets/star-active.svg';
-  // }
-
   ideaToDisplay.star ? (changeStarColor = 'star-img-red', changeImgSrc = './assets/star-active.svg')
     : (changeStarColor = 'star-img-white', changeImgSrc = './assets/star.svg');
 
@@ -67,9 +62,7 @@ const createCard = ideaToDisplay => {
   `;
 }
 
-
-
-function clearForm() {
+const clearForm = () => {
   titleField.value = '';
   bodyField.value = '';
   toggleSaveButton();
