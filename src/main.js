@@ -25,9 +25,9 @@ const saveIdea = event => {
   clearForm();
 }
 
-function createIdea(title, body) {
-  title = titleField.value;
-  body = bodyField.value;
+const createIdea = () => {
+  const title = titleField.value;
+  const body = bodyField.value;
   currentIdea = new Idea(title, body);
   ideaList.push(currentIdea);
   currentIdea.saveToStorage(ideaList);
