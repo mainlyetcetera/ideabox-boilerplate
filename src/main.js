@@ -76,6 +76,8 @@ function favoriteOrDeleteCard(event) {
   }
 }
 
+// favoriting and deleting cards should be two functions according to srp
+
 function deleteCard(event) {
   for (var i = 0; i < ideaList.length; i++) {
     if (event.target.id === `${ideaList[i].id}`) {
