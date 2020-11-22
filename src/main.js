@@ -33,11 +33,9 @@ const createIdea = () => {
   currentIdea.saveToStorage(ideaList);
 }
 
-function displayCard(list) {
+const displayCard = list => {
   cardGrid.innerHTML = '';
-  for (var i = 0; i < list.length; i++) {
-    createCard(list[i]);
-  }
+  list.map(card => createCard(card));
 }
 
 function createCard(ideaToDisplay) {
