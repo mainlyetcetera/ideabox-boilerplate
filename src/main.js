@@ -10,14 +10,6 @@ let cardGrid = document.querySelector('#card-grid');
 let ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
 let currentIdea;
 
-window.onload = displayCard(ideaList);
-titleField.addEventListener('keyup', disableEnableSaveButton);
-bodyField.addEventListener('keyup', disableEnableSaveButton);
-saveButton.addEventListener('click', saveIdea);
-cardGrid.addEventListener('click', favoriteOrDeleteCard);
-showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
-searchBar.addEventListener('keyup', searchIdea);
-
 function disableEnableSaveButton() {
   if (titleField.value === '' || bodyField.value === '') {
     saveButton.disabled = true;
@@ -158,3 +150,11 @@ function searchIdea() {
 
   displayCard(matchIdea);
 }
+
+window.onload = displayCard(ideaList);
+titleField.addEventListener('keyup', disableEnableSaveButton);
+bodyField.addEventListener('keyup', disableEnableSaveButton);
+saveButton.addEventListener('click', saveIdea);
+cardGrid.addEventListener('click', favoriteOrDeleteCard);
+showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
+searchBar.addEventListener('keyup', searchIdea);
