@@ -97,14 +97,10 @@ const favoriteCard = event => {
   localStorage.setItem('ideas', JSON.stringify(ideaList));
 }
 
-function displayFavoriteCard() {
+const displayFavoriteCard = () => {
   showFavoriteIdeaButton.innerText = 'Show All Ideas';
   cardGrid.innerHTML = '';
-  for (var i = 0; i < ideaList.length; i++) {
-    if (ideaList[i].star === true) {
-      createCard(ideaList[i]);
-    }
-  }
+  ideaList.forEach(idea => idea.star ? createCard(idea) : idea);
 }
 
 function toggleCardDisplay() {
