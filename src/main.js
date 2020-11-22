@@ -75,7 +75,7 @@ const favoriteOrDeleteCard = event => event.target.className === 'delete-img' ? 
 // favoriting and deleting cards should be two functions according to srp
 
 const deleteCard = event => {
-  ideaList.forEach((idea, i) => event.target.id === idea.id ? ideaList.splice(i, 1) : idea);
+  ideaList.forEach((idea, i) => event.target.id === `${idea.id}` ? ideaList.splice(i, 1) : idea);
   localStorage.setItem('ideas', JSON.stringify(ideaList));
   displayCard(ideaList);
 }
