@@ -1,14 +1,14 @@
-var saveButton = document.querySelector('#save-button');
-var showFavoriteIdeaButton = document.querySelector('#favorite-idea');
-var searchBar = document.querySelector('#search-bar');
+const saveButton = document.querySelector('#save-button');
+const showFavoriteIdeaButton = document.querySelector('#favorite-idea');
+const searchBar = document.querySelector('#search-bar');
 
-var titleField = document.querySelector('#title-input-area');
-var bodyField = document.querySelector('#body-input-area');
+const titleField = document.querySelector('#title-input-area');
+const bodyField = document.querySelector('#body-input-area');
 
-var cardGrid = document.querySelector('#card-grid');
+let cardGrid = document.querySelector('#card-grid');
 
-var ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
-var currentIdea;
+let ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
+let currentIdea;
 
 window.onload = displayCard(ideaList);
 titleField.addEventListener('keyup', disableEnableSaveButton);
