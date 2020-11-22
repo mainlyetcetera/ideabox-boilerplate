@@ -104,21 +104,16 @@ const displayFavoriteCard = () => {
 }
 
 const toggleCardDisplay = () => showFavoriteIdeaButton.innerText === 'Show Starred Ideas' ?
-  displayFavoriteCard() : (
+  displayFavoriteCard() 
+  : (
     showFavoriteIdeaButton.innerText = 'Show Starred Ideas',
     displayCard(ideaList)    
   )
 
-function searchIdea() {
-  var searchValue = searchBar.value.toLowerCase();
-  cardGrid.innerHTML = '';
-  var matchIdea = [];
-  for (var i = 0; i < ideaList.length; i++) {
-    if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
-      matchIdea.push(ideaList[i]);
-    }
-  }
-
+const searchIdea = () => {
+  const searchValue = searchBar.value.toLowerCase();
+  cardGrid.innerHTML = '';  
+  let matchIdea = ideaList.filter(idea => idea.title.toLowerCase().includes(searchValue) || idea.body.toLowerCase().includes(searchValue));
   displayCard(matchIdea);
 }
 
