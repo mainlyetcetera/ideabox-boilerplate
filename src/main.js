@@ -1,71 +1,48 @@
-var saveButton = document.querySelector('#save-button');
-var showFavoriteIdeaButton = document.querySelector('#favorite-idea');
-var searchBar = document.querySelector('#search-bar');
+const saveButton = document.querySelector('#save-button');
+const showFavoriteIdeaButton = document.querySelector('#favorite-idea');
+const searchBar = document.querySelector('#search-bar');
 
-var titleField = document.querySelector('#title-input-area');
-var bodyField = document.querySelector('#body-input-area');
+const titleField = document.querySelector('#title-input-area');
+const bodyField = document.querySelector('#body-input-area');
 
-var cardGrid = document.querySelector('#card-grid');
+let cardGrid = document.querySelector('#card-grid');
 
-var ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
-var currentIdea;
+let ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
+let currentIdea;
 
-window.onload = displayCard(ideaList);
-titleField.addEventListener('keyup', disableEnableSaveButton);
-bodyField.addEventListener('keyup', disableEnableSaveButton);
-saveButton.addEventListener('click', saveIdea);
-cardGrid.addEventListener('click', favoriteOrDeleteCard);
-showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
-searchBar.addEventListener('keyup', searchIdea);
-
-function disableEnableSaveButton() {
-  if (titleField.value === '' || bodyField.value === '') {
-    saveButton.disabled = true;
-  } else {
-    saveButton.disabled = false;
-  }
-
+const toggleSaveButton = () => {
+  !titleField.value || !bodyField.value ? saveButton.disabled = true : saveButton.disabled = false;
   toggleSaveBtnColor();
 }
 
-function toggleSaveBtnColor() {
-  if (saveButton.disabled === false) {
-    saveButton.className = 'enabled-save-button';
-  } else {
-    saveButton.className = 'disabled-save-button';
-  }
-}
+const toggleSaveBtnColor = () => !saveButton.disabled ? saveButton.className = 'enabled-save-button' : saveButton.className = 'disabled-save-button';
 
-function saveIdea(event) {
+const saveIdea = event => {
   event.preventDefault();
-  disableEnableSaveButton();
+  toggleSaveButton();
   createIdea();
   displayCard(ideaList);
   clearForm();
 }
 
-function createIdea(title, body) {
-  title = titleField.value;
-  body = bodyField.value;
+const createIdea = () => {
+  const title = titleField.value;
+  const body = bodyField.value;
   currentIdea = new Idea(title, body);
   ideaList.push(currentIdea);
   currentIdea.saveToStorage(ideaList);
 }
 
-function displayCard(list) {
+const displayCard = list => {
   cardGrid.innerHTML = '';
-  for (var i = 0; i < list.length; i++) {
-    createCard(list[i]);
-  }
+  list.map(card => createCard(card));
 }
 
-function createCard(ideaToDisplay) {
-  var changeStarColor = 'star-img-white';
-  var changeImgSrc = './assets/star.svg';
-  if (ideaToDisplay.star === true) {
-    changeStarColor = 'star-img-red';
-    changeImgSrc = './assets/star-active.svg';
-  }
+const createCard = ideaToDisplay => {
+  let changeStarColor;
+  let changeImgSrc;
+  ideaToDisplay.star ? (changeStarColor = 'star-img-red', changeImgSrc = './assets/star-active.svg')
+    : (changeStarColor = 'star-img-white', changeImgSrc = './assets/star.svg');
 
   cardGrid.innerHTML += `
   <article class="card-section" id="${ideaToDisplay.id}">
@@ -85,76 +62,65 @@ function createCard(ideaToDisplay) {
   `;
 }
 
-function clearForm() {
+const clearForm = () => {
   titleField.value = '';
   bodyField.value = '';
-  disableEnableSaveButton();
+  toggleSaveButton();
 }
 
-function favoriteOrDeleteCard(event) {
-  if (event.target.className === 'delete-img') {
-    deleteCard(event);
-  } else if (event.target.className === 'star-img-white'|| event.target.className === 'star-img-red') {
-    favoriteCard(event);
-  }
-}
+const favoriteOrDeleteCard = event => event.target.className === 'delete-img' ? deleteCard(event)
+  : event.target.className === 'star-img-white' || event.target.className === 'star-img-red' ? favoriteCard(event)
+  : event;
 
-function deleteCard(event) {
-  for (var i = 0; i < ideaList.length; i++) {
-    if (event.target.id === `${ideaList[i].id}`) {
-      ideaList.splice(i, 1);
-    }
-  }
+// favoriting and deleting cards should be two functions according to srp
 
+const deleteCard = event => {
+  ideaList.forEach((idea, i) => event.target.id === `${idea.id}` ? ideaList.splice(i, 1) : idea);
   localStorage.setItem('ideas', JSON.stringify(ideaList));
   displayCard(ideaList);
 }
 
-function favoriteCard(event) {
-  var target = event.target;
-  for (var i = 0; i < ideaList.length; i++) {
-    if (target.id === `${ideaList[i].id}` && target.className === 'star-img-white') {
-      target.src = "./assets/star-active.svg";
-      target.className = 'star-img-red';
-      ideaList[i].star = true;
-    } else if (target.id === `${ideaList[i].id}` && target.className === 'star-img-red') {
-      target.src = "./assets/star.svg";
-      target.className = 'star-img-white';
-      ideaList[i].star = false;
-    }
-  }
+const favoriteCard = event => {
+  const target = event.target;
+  ideaList.forEach(idea => {
+    target.id === `${idea.id}` && target.className === 'star-img-white' ? (
+      target.src = './assets/star-active.svg',
+      target.className = 'star-img-red',
+      idea.star = true
+    ) : target.id === `${idea.id}` && target.className === 'star-img-red' ? (
+      target.src = './assets/star.svg',
+      target.className = 'star-img-white',
+      idea.star = false
+    ) : event;
+  });
 
   localStorage.setItem('ideas', JSON.stringify(ideaList));
 }
 
-function displayFavoriteCard() {
+const displayFavoriteCard = () => {
   showFavoriteIdeaButton.innerText = 'Show All Ideas';
   cardGrid.innerHTML = '';
-  for (var i = 0; i < ideaList.length; i++) {
-    if (ideaList[i].star === true) {
-      createCard(ideaList[i]);
-    }
-  }
+  ideaList.forEach(idea => idea.star ? createCard(idea) : idea);
 }
 
-function toggleCardDisplay() {
-  if (showFavoriteIdeaButton.innerText === 'Show Starred Ideas') {
-    displayFavoriteCard();
-  } else {
-    showFavoriteIdeaButton.innerText = 'Show Starred Ideas';
-    displayCard(ideaList);
-  }
-}
+const toggleCardDisplay = () => showFavoriteIdeaButton.innerText === 'Show Starred Ideas' ?
+  displayFavoriteCard() 
+  : (
+    showFavoriteIdeaButton.innerText = 'Show Starred Ideas',
+    displayCard(ideaList)    
+  )
 
-function searchIdea() {
-  var searchValue = searchBar.value.toLowerCase();
-  cardGrid.innerHTML = '';
-  var matchIdea = [];
-  for (var i = 0; i < ideaList.length; i++) {
-    if (ideaList[i].title.toLowerCase().includes(searchValue) || ideaList[i].body.toLowerCase().includes(searchValue)) {
-      matchIdea.push(ideaList[i]);
-    }
-  }
-
+const searchIdea = () => {
+  const searchValue = searchBar.value.toLowerCase();
+  cardGrid.innerHTML = '';  
+  let matchIdea = ideaList.filter(idea => idea.title.toLowerCase().includes(searchValue) || idea.body.toLowerCase().includes(searchValue));
   displayCard(matchIdea);
 }
+
+window.onload = displayCard(ideaList);
+titleField.addEventListener('keyup', toggleSaveButton);
+bodyField.addEventListener('keyup', toggleSaveButton);
+saveButton.addEventListener('click', saveIdea);
+cardGrid.addEventListener('click', favoriteOrDeleteCard);
+showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
+searchBar.addEventListener('keyup', searchIdea);
