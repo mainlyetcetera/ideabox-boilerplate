@@ -38,13 +38,16 @@ const displayCard = list => {
   list.map(card => createCard(card));
 }
 
-function createCard(ideaToDisplay) {
-  var changeStarColor = 'star-img-white';
-  var changeImgSrc = './assets/star.svg';
-  if (ideaToDisplay.star === true) {
-    changeStarColor = 'star-img-red';
-    changeImgSrc = './assets/star-active.svg';
-  }
+const createCard = ideaToDisplay => {
+  let changeStarColor;
+  let changeImgSrc;
+  // if (ideaToDisplay.star === true) {
+  //   changeStarColor = 'star-img-red';
+  //   changeImgSrc = './assets/star-active.svg';
+  // }
+
+  ideaToDisplay.star ? (changeStarColor = 'star-img-red', changeImgSrc = './assets/star-active.svg')
+    : (changeStarColor = 'star-img-white', changeImgSrc = './assets/star.svg');
 
   cardGrid.innerHTML += `
   <article class="card-section" id="${ideaToDisplay.id}">
@@ -63,6 +66,8 @@ function createCard(ideaToDisplay) {
   </article>
   `;
 }
+
+
 
 function clearForm() {
   titleField.value = '';
