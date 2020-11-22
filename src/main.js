@@ -15,13 +15,7 @@ const toggleSaveButton = () => {
   toggleSaveBtnColor();
 }
 
-function toggleSaveBtnColor() {
-  if (saveButton.disabled === false) {
-    saveButton.className = 'enabled-save-button';
-  } else {
-    saveButton.className = 'disabled-save-button';
-  }
-}
+const toggleSaveBtnColor = () => !saveButton.disabled ? saveButton.className = 'enabled-save-button' : saveButton.className = 'disabled-save-button';
 
 function saveIdea(event) {
   event.preventDefault();
