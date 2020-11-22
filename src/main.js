@@ -80,19 +80,19 @@ const deleteCard = event => {
   displayCard(ideaList);
 }
 
-function favoriteCard(event) {
-  var target = event.target;
-  for (var i = 0; i < ideaList.length; i++) {
-    if (target.id === `${ideaList[i].id}` && target.className === 'star-img-white') {
-      target.src = "./assets/star-active.svg";
-      target.className = 'star-img-red';
-      ideaList[i].star = true;
-    } else if (target.id === `${ideaList[i].id}` && target.className === 'star-img-red') {
-      target.src = "./assets/star.svg";
-      target.className = 'star-img-white';
-      ideaList[i].star = false;
-    }
-  }
+const favoriteCard = event => {
+  const target = event.target;
+  ideaList.forEach(idea => {
+    target.id === `${idea.id}` && target.className === 'star-img-white' ? (
+      target.src = './assets/star-active.svg',
+      target.className = 'star-img-red',
+      idea.star = true
+    ) : target.id === `${idea.id}` && target.className === 'star-img-red' ? (
+      target.src = './assets/star.svg',
+      target.className = 'star-img-white',
+      idea.star = false
+    ) : event;
+  });
 
   localStorage.setItem('ideas', JSON.stringify(ideaList));
 }
