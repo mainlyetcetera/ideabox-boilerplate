@@ -70,7 +70,7 @@ const clearForm = () => {
 
 const favoriteOrDeleteCard = event => event.target.className === 'delete-img' ? (
   deleteCard(event)
-  ) : event.target.className === 'star-img-white' || event.target.className === 'star-img-red' ? (
+) : event.target.className === 'star-img-white' || event.target.className === 'star-img-red' ? (
   favoriteCard(event)) : event;
 
 // favoriting and deleting cards should be two functions according to srp
