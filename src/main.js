@@ -10,13 +10,8 @@ let cardGrid = document.querySelector('#card-grid');
 let ideaList = JSON.parse(localStorage.getItem('ideas')) || [];
 let currentIdea;
 
-function disableEnableSaveButton() {
-  if (titleField.value === '' || bodyField.value === '') {
-    saveButton.disabled = true;
-  } else {
-    saveButton.disabled = false;
-  }
-
+const toggleSaveButton = () => {
+  !titleField.value || !bodyField.value ? saveButton.disabled = true : saveButton.disabled = false;
   toggleSaveBtnColor();
 }
 
@@ -30,7 +25,7 @@ function toggleSaveBtnColor() {
 
 function saveIdea(event) {
   event.preventDefault();
-  disableEnableSaveButton();
+  toggleSaveButton();
   createIdea();
   displayCard(ideaList);
   clearForm();
@@ -80,7 +75,7 @@ function createCard(ideaToDisplay) {
 function clearForm() {
   titleField.value = '';
   bodyField.value = '';
-  disableEnableSaveButton();
+  toggleSaveButton();
 }
 
 function favoriteOrDeleteCard(event) {
@@ -152,8 +147,8 @@ function searchIdea() {
 }
 
 window.onload = displayCard(ideaList);
-titleField.addEventListener('keyup', disableEnableSaveButton);
-bodyField.addEventListener('keyup', disableEnableSaveButton);
+titleField.addEventListener('keyup', toggleSaveButton);
+bodyField.addEventListener('keyup', toggleSaveButton);
 saveButton.addEventListener('click', saveIdea);
 cardGrid.addEventListener('click', favoriteOrDeleteCard);
 showFavoriteIdeaButton.addEventListener('click', toggleCardDisplay);
